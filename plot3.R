@@ -25,16 +25,18 @@ dateTime <- paste(hpc.2$Date, hpc.2$Time)
 hpc.2$DateTime <- as.POSIXct(dateTime)
 
 #Energy submetering through time, by submeter
+
+par(mfrow=c(1,1), mar=c(4,4,4,1))
 with(hpc.2, {
     plot(Sub_metering_1~DateTime, type="l",
          ylab="Energy sub metering", xlab="")
     lines(Sub_metering_2~DateTime, col='Red')
     lines(Sub_metering_3~DateTime, col='Blue')
 })
-legend("topright", col=c("black", "red", "blue"),
+legend(x="topright", col=c("black", "red", "blue"),
        legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
        lty=1, lwd=1)
 
 #Export file
-dev.copy(png, file="plot2.png", height=480, width=480)
+dev.copy(png, file="plot3.png", height=480, width=480)
 dev.off()
